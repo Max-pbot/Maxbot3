@@ -13,10 +13,10 @@ local function check_member_autorealm(cb_extra, success, result)
         group_type = 'Realm',
         settings = {
           set_name = string.gsub(msg.to.print_name, '_', ' '),
-          lock_name = 'yes',
-          lock_photo = 'no',
-          lock_member = 'no',
-          flood = 'yes'
+          lock_name = 'Faal!',
+          lock_photo = 'GHeyre faal*',
+          lock_member = 'Gheyre faal*',
+          flood = 'Faal!'
         }
       }
       save_data(_config.moderation.data, data)
@@ -27,7 +27,7 @@ local function check_member_autorealm(cb_extra, success, result)
       end
       data[tostring(realms)][tostring(msg.to.id)] = msg.to.id
       save_data(_config.moderation.data, data)
-      return send_large_msg(receiver, 'Welcome to your new realm !')
+      return send_large_msg(receiver, 'User['..user_id..']Be realm jadide khod khosh amadid!')
     end
   end
 end
@@ -43,10 +43,10 @@ local function check_member_realm_add(cb_extra, success, result)
         group_type = 'Realm',
         settings = {
           set_name = string.gsub(msg.to.print_name, '_', ' '),
-          lock_name = 'yes',
-          lock_photo = 'no',
-          lock_member = 'no',
-          flood = 'yes'
+          lock_name = 'Faal!',
+          lock_photo = 'Gheyre faal*',
+          lock_member = 'Gheyre faal*',
+          flood = 'Faal!'
         }
       }
       save_data(_config.moderation.data, data)
@@ -57,7 +57,7 @@ local function check_member_realm_add(cb_extra, success, result)
       end
       data[tostring(realms)][tostring(msg.to.id)] = msg.to.id
       save_data(_config.moderation.data, data)
-      return send_large_msg(receiver, 'Realm has been added!')
+      return send_large_msg(receiver, 'User['..user_id..']Realm Add shod!')
     end
   end
 end
@@ -75,10 +75,10 @@ function check_member_group(cb_extra, success, result)
         set_owner = member_id ,
         settings = {
           set_name = string.gsub(msg.to.print_name, '_', ' '),
-          lock_name = 'yes',
-          lock_photo = 'no',
-          lock_member = 'no',
-          flood = 'yes',
+          lock_name = 'Faal!',
+          lock_photo = 'Gheyre faal*',
+          lock_member = 'Gheyre faal*',
+          flood = 'Faal!',
         }
       }
       save_data(_config.moderation.data, data)
@@ -89,7 +89,7 @@ function check_member_group(cb_extra, success, result)
       end
       data[tostring(groups)][tostring(msg.to.id)] = msg.to.id
       save_data(_config.moderation.data, data)
-      return send_large_msg(receiver, 'You have been promoted as the owner.')
+      return send_large_msg(receiver, 'User['..user_id..']SHoma be onvane modir set shodid!.')
     end
   end
 end
@@ -107,10 +107,10 @@ local function check_member_modadd(cb_extra, success, result)
         set_owner = member_id ,
         settings = {
           set_name = string.gsub(msg.to.print_name, '_', ' '),
-          lock_name = 'yes',
-          lock_photo = 'no',
-          lock_member = 'no',
-          flood = 'yes',
+          lock_name = 'Faal!',
+          lock_photo = 'Gheyre faal*',
+          lock_member = 'Gheyre faal*',
+          flood = 'Faal!',
         }
       }
       save_data(_config.moderation.data, data)
@@ -121,7 +121,7 @@ local function check_member_modadd(cb_extra, success, result)
       end
       data[tostring(groups)][tostring(msg.to.id)] = msg.to.id
       save_data(_config.moderation.data, data)
-      return send_large_msg(receiver, 'Group is added and you have been promoted as the owner ')
+      return send_large_msg(receiver, 'User['..user_id..']Gorooh sakhte shod va shoma be onvane modir set shodid!')
     end
   end
 end
@@ -156,7 +156,7 @@ local function check_member_realmrem(cb_extra, success, result)
       end
       data[tostring(realms)][tostring(msg.to.id)] = nil
       save_data(_config.moderation.data, data)
-      return send_large_msg(receiver, 'Realm has been removed!')
+      return send_large_msg(receiver, 'User['..user_id..']Realm Hazf shod!')
     end
   end
 end
@@ -177,14 +177,14 @@ local function check_member_modrem(cb_extra, success, result)
       end
       data[tostring(groups)][tostring(msg.to.id)] = nil
       save_data(_config.moderation.data, data)
-      return send_large_msg(receiver, 'Group has been removed')
+      return send_large_msg(receiver, 'User['..user_id..']Gorooh hazf shod!')
     end
   end
 end
 --End Check Member
 local function show_group_settingsmod(msg, data, target)
  	if not is_momod(msg) then
-    	return "For moderators only!"
+    	return "User["..user_id.."]Faghat baraye moderatorha!"
   	end
   	local data = load_data(_config.moderation.data)
     if data[tostring(msg.to.id)] then
@@ -195,32 +195,32 @@ local function show_group_settingsmod(msg, data, target)
         	NUM_MSG_MAX = 5
       	end
     end
-    local bots_protection = "Yes"
+    local bots_protection = "Faal!"
     if data[tostring(msg.to.id)]['settings']['lock_bots'] then
     	bots_protection = data[tostring(msg.to.id)]['settings']['lock_bots']
    	end
-    local leave_ban = "no"
+    local leave_ban = "Gheyre faal*"
     if data[tostring(msg.to.id)]['settings']['leave_ban'] then
     	leave_ban = data[tostring(msg.to.id)]['settings']['leave_ban']
    	end
   local settings = data[tostring(target)]['settings']
-  local text = "Group settings:\nLock group name : "..settings.lock_name.."\nLock group photo : "..settings.lock_photo.."\nLock group member : "..settings.lock_member.."\nLock group leave : "..leave_ban.."\nflood sensitivity : "..NUM_MSG_MAX.."\nBot protection : "..bots_protection--"\nPublic: "..public
+  local text = "Tanzimate gorooh~:\nLock group name : "..settings.lock_name.."\nLock group photo : "..settings.lock_photo.."\nLock group member : "..settings.lock_member.."\nLock group leave : "..leave_ban.."\nflood sensitivity : "..NUM_MSG_MAX.."\nBot protection : "..bots_protection--"\nPublic: "..public
   return text
 end
 
 local function set_descriptionmod(msg, data, target, about)
   if not is_momod(msg) then
-    return "For moderators only!"
+    return "User["..user_id.."]Faghat baraye moderatorha!"
   end
-  local data_cat = 'description'
+  local data_cat = 'Etelaate gorooh~'
   data[tostring(target)][data_cat] = about
   save_data(_config.moderation.data, data)
-  return 'Set group description to:\n'..about
+  return 'User['..user_id..']Etelaate gorooh taghir konad be:\n'..about
 end
 local function get_description(msg, data)
-  local data_cat = 'description'
+  local data_cat = 'Etelaate gorooh~'
   if not data[tostring(msg.to.id)][data_cat] then
-    return 'No description available.'
+    return 'User['..user_id..']Etelaate gorooh dar dastres nist!.'
   end
   local about = data[tostring(msg.to.id)][data_cat]
   local about = string.gsub(msg.to.print_name, "_", " ")..':\n\n'..about
@@ -228,197 +228,197 @@ local function get_description(msg, data)
 end
 local function lock_group_arabic(msg, data, target)
   if not is_momod(msg) then
-    return "For moderators only!"
+    return "User["..user_id.."]Faghat baraye moderatorha!"
   end
   local group_arabic_lock = data[tostring(target)]['settings']['lock_arabic']
-  if group_arabic_lock == 'yes' then
-    return 'Arabic is already locked'
+  if group_arabic_lock == 'Faal!' then
+    return 'User['..user_id..']Arabic ghofl ast'
   else
-    data[tostring(target)]['settings']['lock_arabic'] = 'yes'
+    data[tostring(target)]['settings']['lock_arabic'] = 'Faal!'
     save_data(_config.moderation.data, data)
-    return 'Arabic has been locked'
+    return 'User['..user_id..']Arabic ghofl shod!'
   end
 end
 
 local function unlock_group_arabic(msg, data, target)
   if not is_momod(msg) then
-    return "For moderators only!"
+    return "User["..user_id.."]Faghat baraye moderatorha!"
   end
   local group_arabic_lock = data[tostring(target)]['settings']['lock_arabic']
-  if group_arabic_lock == 'no' then
-    return 'Arabic is already unlocked'
+  if group_arabic_lock == 'Gheyre faal*' then
+    return 'User['..user_id..']Arabic baz ast!'
   else
-    data[tostring(target)]['settings']['lock_arabic'] = 'no'
+    data[tostring(target)]['settings']['lock_arabic'] = 'Gheyre faal*'
     save_data(_config.moderation.data, data)
-    return 'Arabic has been unlocked'
+    return 'User['..user_id..']Arabic baz shod!'
   end
 end
 
 local function lock_group_bots(msg, data, target)
   if not is_momod(msg) then
-    return "For moderators only!"
+    return "User["..user_id.."]Faghat baraye moderatorha!"
   end
   local group_bots_lock = data[tostring(target)]['settings']['lock_bots']
-  if group_bots_lock == 'yes' then
-    return 'Bots protection is already enabled'
+  if group_bots_lock == 'Faal!' then
+    return 'User['..user_id..']Antibot faal ast!'
   else
     data[tostring(target)]['settings']['lock_bots'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'Bots protection has been enabled'
+    return 'User['..user_id..']Antibot faal shod!'
   end
 end
 
 local function unlock_group_bots(msg, data, target)
   if not is_momod(msg) then
-    return "For moderators only!"
+    return "User["..user_id.."]Faghat baraye moderatorha!"
   end
   local group_bots_lock = data[tostring(target)]['settings']['lock_bots']
   if group_bots_lock == 'no' then
-    return 'Bots protection is already disabled'
+    return 'User['..user_id..']Antibot faal ast!'
   else
-    data[tostring(target)]['settings']['lock_bots'] = 'no'
+    data[tostring(target)]['settings']['lock_bots'] = 'Gheyre faal*'
     save_data(_config.moderation.data, data)
-    return 'Bots protection has been disabled'
+    return 'User['..user_id..']Antibot gheyre faal shod!'
   end
 end
 
 local function lock_group_namemod(msg, data, target)
   if not is_momod(msg) then
-    return "For moderators only!"
+    return "User["..user_id.."]Faghat baraye moderatorha!"
   end
   local group_name_set = data[tostring(target)]['settings']['set_name']
   local group_name_lock = data[tostring(target)]['settings']['lock_name']
-  if group_name_lock == 'yes' then
-    return 'Group name is already locked'
+  if group_name_lock == 'Faal!' then
+    return 'User['..user_id..']Esme gorooh ghofl ast!'
   else
-    data[tostring(target)]['settings']['lock_name'] = 'yes'
+    data[tostring(target)]['settings']['lock_name'] = 'Faal!'
     save_data(_config.moderation.data, data)
     rename_chat('chat#id'..target, group_name_set, ok_cb, false)
-    return 'Group name has been locked'
+    return 'User['..user_id..']Esme gorooh ghofl shod!'
   end
 end
 local function unlock_group_namemod(msg, data, target)
   if not is_momod(msg) then
-    return "For moderators only!"
+    return "User["..user_id.."]Faghat baraye moderatorha!"
   end
   local group_name_set = data[tostring(target)]['settings']['set_name']
   local group_name_lock = data[tostring(target)]['settings']['lock_name']
-  if group_name_lock == 'no' then
-    return 'Group name is already unlocked'
+  if group_name_lock == 'Gheyre faal*' then
+    return 'User['..user_id..']Esme gorooh baz ast!'
   else
-    data[tostring(target)]['settings']['lock_name'] = 'no'
+    data[tostring(target)]['settings']['lock_name'] = 'Gheyre faal*'
     save_data(_config.moderation.data, data)
-    return 'Group name has been unlocked'
+    return 'User['..user_id..']Esme gorooh baz shod!'
   end
 end
 local function lock_group_floodmod(msg, data, target)
   if not is_owner(msg) then
-    return "Only admins can do it for now"
+    return "User["..user_id.."]Faghat admin mitavanad in kar ra anjam dahad!"
   end
   local group_flood_lock = data[tostring(target)]['settings']['flood']
-  if group_flood_lock == 'yes' then
-    return 'Group flood is locked'
+  if group_flood_lock == 'Faal!' then
+    return 'User['..user_id..']Antispam gorooh faal ast!'
   else
-    data[tostring(target)]['settings']['flood'] = 'yes'
+    data[tostring(target)]['settings']['flood'] = 'Faal!'
     save_data(_config.moderation.data, data)
-    return 'Group flood has been locked'
+    return 'User['..user_id..']Antisoam gorooh faal shod!'
   end
 end
 
 local function unlock_group_floodmod(msg, data, target)
   if not is_owner(msg) then
-    return "Only admins can do it for now"
+    return "User["..user_id.."]Faghat admin mitavanad in kar ra anjam dahad!"
   end
   local group_flood_lock = data[tostring(target)]['settings']['flood']
-  if group_flood_lock == 'no' then
-    return 'Group flood is not locked'
+  if group_flood_lock == 'Gheyre faal*' then
+    return 'User['..user_id..']Antispam gorooh baz ast!'
   else
-    data[tostring(target)]['settings']['flood'] = 'no'
+    data[tostring(target)]['settings']['flood'] = 'Gheyre faal*'
     save_data(_config.moderation.data, data)
-    return 'Group flood has been unlocked'
+    return 'User['..user_id..']Antispam gorooh baz shod!'
   end
 end
 
 local function lock_group_membermod(msg, data, target)
   if not is_momod(msg) then
-    return "For moderators only!"
+    return "User["..user_id.."]Faghat baraye moderatorha!"
   end
   local group_member_lock = data[tostring(target)]['settings']['lock_member']
-  if group_member_lock == 'yes' then
-    return 'Group members are already locked'
+  if group_member_lock == 'Faal!' then
+    return 'User['..user_id..']Addmember ghofl ast!'
   else
-    data[tostring(target)]['settings']['lock_member'] = 'yes'
+    data[tostring(target)]['settings']['lock_member'] = 'Faal!'
     save_data(_config.moderation.data, data)
   end
-  return 'Group members has been locked'
+  return 'User['..user_id..']Addmember ghofl shod!'
 end
 
 local function unlock_group_membermod(msg, data, target)
   if not is_momod(msg) then
-    return "For moderators only!"
+    return "User["..user_id.."]Faghat baraye moderatorha!"
   end
   local group_member_lock = data[tostring(target)]['settings']['lock_member']
-  if group_member_lock == 'no' then
-    return 'Group members are not locked'
+  if group_member_lock == 'Gheyre faal*' then
+    return 'User['..user_id..']Addmember baz ast!'
   else
-    data[tostring(target)]['settings']['lock_member'] = 'no'
+    data[tostring(target)]['settings']['lock_member'] = 'Gheyre faal*'
     save_data(_config.moderation.data, data)
-    return 'Group members has been unlocked'
+    return 'User['..user_id..']Addmember baz shod!'
   end
 end
 
 
 local function set_public_membermod(msg, data, target)
   if not is_momod(msg) then
-    return "For moderators only!"
+    return "User["..user_id.."]Faghat baraye moderatorha!"
   end
   local group_member_lock = data[tostring(target)]['settings']['public']
   if group_member_lock == 'yes' then
-    return 'Group is already public'
+    return 'User['..user_id..']Gorooh hamegani ast!'
   else
-    data[tostring(target)]['settings']['public'] = 'yes'
+    data[tostring(target)]['settings']['public'] = 'Faal!'
     save_data(_config.moderation.data, data)
   end
-  return 'Group is now: public'
+  return 'Vaziate gorooh: Hamegani!'
 end
 
 local function unset_public_membermod(msg, data, target)
   if not is_momod(msg) then
-    return "For moderators only!"
+    return "User["..user_id.."]Faghat baraye moderatorha!"
   end
   local group_member_lock = data[tostring(target)]['settings']['public']
-  if group_member_lock == 'no' then
-    return 'Group is not public'
+  if group_member_lock == 'Faal!' then
+    return 'User['..user_id..']Gorooh shakhsi ast!'
   else
-    data[tostring(target)]['settings']['public'] = 'no'
+    data[tostring(target)]['settings']['public'] = 'Gheyre faal*'
     save_data(_config.moderation.data, data)
-    return 'Group is now: not public'
+    return 'Vaziate gorooh: Shakhsi!'
   end
 end
 
 local function lock_group_leave(msg, data, target)
   if not is_momod(msg) then
-    return "For moderators only!"
+    return "User["..user_id.."]Faghat baraye moderatorha!"
   end
   local leave_ban = data[tostring(msg.to.id)]['settings']['leave_ban']
-  if leave_ban == 'yes' then
-    return 'Leaving users will be banned'
+  if leave_ban == 'Faal!' then
+    return 'Khorooj:Ban shodan az gorooh!'
   else
-    data[tostring(msg.to.id)]['settings']['leave_ban'] = 'yes'
+    data[tostring(msg.to.id)]['settings']['leave_ban'] = 'Faal!'
     save_data(_config.moderation.data, data)
   end
-  return 'Leaving users will be banned'
+  return 'Khorooj:Ban shodan az gorooh!'
 end
 
 local function unlock_group_leave(msg, data, target)
   if not is_momod(msg) then
-    return "For moderators only!"
+    return "User["..user_id.."]Faghat baraye moderatorha!"
   end
   local leave_ban = data[tostring(msg.to.id)]['settings']['leave_ban']
-  if leave_ban == 'no' then
-    return 'Leaving users will not be banned'
+  if leave_ban == 'Gheyre faal*' then
+    return 'Khorooj:Ban nashodan az gorooh!'
   else
-    data[tostring(msg.to.id)]['settings']['leave_ban'] = 'no'
+    data[tostring(msg.to.id)]['settings']['leave_ban'] = 'Gheyre faal*'
     save_data(_config.moderation.data, data)
     return 'Leaving users will not be banned'
   end
