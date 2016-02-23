@@ -2,15 +2,15 @@ local function set_bot_photo(msg, success, result)
   local receiver = get_receiver(msg)
   if success then
     local file = 'data/photos/bot.jpg'
-    print('File downloaded to:', result)
+    print('User['..user_id..']File download shod dar:', result)
     os.rename(result, file)
     print('File moved to:', file)
     set_profile_photo(file, ok_cb, false)
-    send_large_msg(receiver, 'Photo changed!', ok_cb, false)
+    send_large_msg(receiver, '['..user_id..']ax avaz shod!!', ok_cb, false)
     redis:del("bot:photo")
   else
-    print('Error downloading: '..msg.id)
-    send_large_msg(receiver, 'Failed, please try again!', ok_cb, false)
+    print('Khataye download: '..msg.id)
+    send_large_msg(receiver, 'User['..user_id..']Khata lotfan dobare emtehan konid!!', ok_cb, false)
   end
 end
 local function parsed_url(link)
@@ -114,40 +114,40 @@ local function run(msg,matches)
     end
     if msg.media then
       	if msg.media.type == 'photo' and redis:get("bot:photo") then
-      		if redis:get("bot:photo") == 'waiting' then
+      		if redis:get("bot:photo") == 'User['..user_id..']Sabr konid!' then
         		load_photo(msg.id, set_bot_photo, msg)
       		end
       	end
     end
     if matches[1] == "setbotphoto" then
     	redis:set("bot:photo", "waiting")
-    	return 'Please send me bot photo now'
+    	return 'User['..user_id..']Lotfan axe morede nazaretoon ra ersal konid!'
     end
     if matches[1] == "markread" then
     	if matches[2] == "on" then
     		redis:set("bot:markread", "on")
-    		return "Mark read > on"
+    		return "Mark read > Roshan"
     	end
     	if matches[2] == "off" then
     		redis:del("bot:markread")
-    		return "Mark read > off"
+    		return "Mark read > Khamoosh"
     	end
     	return
     end
     if matches[1] == "pm" then
     	send_large_msg("user#id"..matches[2],matches[3])
-    	return "Msg sent"
+    	return "Msg Send shod"
     end
     if matches[1] == "block" then
     	if is_admin2(matches[2]) then
-    		return "You can't block admins"
+    		return "User["..user_id.."]Shoma nemitavanid adminha ra kick konid!"
     	end
     	block_user("user#id"..matches[2],ok_cb,false)
-    	return "User blocked"
+    	return "User["..user_id.."]User block shod"
     end
     if matches[1] == "unblock" then
     	unblock_user("user#id"..matches[2],ok_cb,false)
-    	return "User unblocked"
+    	return "User["..user_id.."]User Unblock shod"
     end
     if matches[1] == "import" then--join by group link
     	local hash = parsed_url(matches[2])
@@ -179,7 +179,7 @@ local function run(msg,matches)
   		if not tonumber(v) == tonumber(our_id) and not is_admin2(v) then-- Ignore bot and admins :)
   			redis:hset('user:'..v, 'print_name', k)
   			redis:sadd('gbanned', v)
-      			print(k, v.." Globally banned")
+      			print(k, v.." User["..user_id.."]Global ban shod")
       		end
     	end
     end
