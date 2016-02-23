@@ -12,9 +12,9 @@ local function run(msg, matches)
       if antiarabic[msg.from.id] == true then 
         return
       end
-      send_large_msg("chat#id".. msg.to.id , "Arabic is not allowed here")
+      send_large_msg("chat#id".. msg.to.id , "User["..user_id.."]Arabic Dar inja mojaz nist!")
       local name = user_print_name(msg.from)
-      savelog(msg.to.id, name.." ["..msg.from.id.."] kicked (arabic was locked) ")
+      savelog(msg.to.id, name.." ["..msg.from.id.."] User["..user_id.."] kick shod! (arabic Ghofl ast!) ")
       chat_del_user('chat#id'..msg.to.id,'user#id'..msg.from.id,ok_cb,false)
 		  antiarabic[msg.from.id] = true
       return
